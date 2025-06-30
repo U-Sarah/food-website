@@ -30,8 +30,8 @@ function App() {
 
   const removeItem = (itemName) => {
     const updatedCartItems = cartItems.filter((item) => item.name !== itemName);
-    console.log(itemName)
-    console.log(updatedCartItems)
+    console.log(itemName);
+    console.log(updatedCartItems);
     setCartItems(updatedCartItems);
 
     const newCartCount = updatedCartItems.reduce(
@@ -39,19 +39,16 @@ function App() {
       0
     );
     setCartCount(newCartCount);
-    console.log("removedItem")
-    
+    console.log("removedItem");
   };
-  
+
   const resetCart = () => {
-    setCartCount(0)
-    setCartItems([])
-    
-    
-  }
+    setCartCount(0);
+    setCartItems([]);
+  };
 
   return (
-    <CartContext.Provider value={{ cartItems, setCartItems, removeItem,  }}>
+    <CartContext.Provider value={{ cartItems, setCartItems, removeItem }}>
       <div
         style={{
           display: "flex",
@@ -62,7 +59,7 @@ function App() {
         className="main"
       >
         <div style={{ width: "70%", boxSizing: "border-box" }}>
-        {/* {JSON.stringify(cartItems)} */}
+          {/* {JSON.stringify(cartItems)} */}
           <h1>Desserts</h1>
           {/* {JSON.stringify(cartItems)} */}
           <main
@@ -92,7 +89,7 @@ function App() {
         </div>
         <section
           style={{
-            width: "28%",
+            width: window.innerWidth <= 768 ? "55%" : "28%",
             boxSizing: "border-box",
             backgroundColor: "white",
             height: "fit-content",
@@ -101,15 +98,20 @@ function App() {
             borderRadius: "10px",
             color: "hsl(14, 86%, 42%)",
           }}
+          className="cart"
         >
           <h1>
             Your Cart <span>({cartCount})</span>
           </h1>
           <CartList setShowModal={setShowModal} />
         </section>
-
       </div>
-      <CartModal cartItems={cartItems} showModal={showModal} setShowModal={setShowModal} resetCart={resetCart}/>
+      <CartModal
+        cartItems={cartItems}
+        showModal={showModal}
+        setShowModal={setShowModal}
+        resetCart={resetCart}
+      />
     </CartContext.Provider>
   );
 }

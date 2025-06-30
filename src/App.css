@@ -1,6 +1,11 @@
 /* media qury */
-@media (max-width: 600px) {
+@media (max-width: 740px) {
     .main {
         flex-direction: column;
+        width: 500px;
+        overflow: hidden;
     } 
+    .cart {
+        width: 300px;
+    }
 }

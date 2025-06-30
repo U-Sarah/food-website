@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { CartContext } from "../App";
 import CartItem from "./CartItem";
-import { btnStyle } from "./ProductCard";
+
 const style = {
   alignItems: "center",
   textAlign: "center",
